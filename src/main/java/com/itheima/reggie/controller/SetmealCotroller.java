@@ -192,7 +192,7 @@ public class SetmealCotroller {
     }*/
 
     @PostMapping("/status/{status}")
-    public R<String> status(@PathVariable Integer status, @RequestParam  List<Long> ids) {
+    public R<String> status(@PathVariable("status") Integer status, @RequestParam  List<Long> ids) {
         Setmeal setmeal = new Setmeal();
         for (Long dishId : ids) {
             setmeal.setId(dishId);
