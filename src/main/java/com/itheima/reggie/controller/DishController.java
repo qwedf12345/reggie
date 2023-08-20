@@ -147,8 +147,8 @@ public class DishController {
      * @param
      * @return
      */
-    /*@PostMapping("/status/{status}")
-    public R<String> modify(@PathVariable Integer status,Long[] ids){
+    @PostMapping("/status/{status}")
+    public R<String> modify(@PathVariable("status") Integer status,Long[] ids){
         DishDto dishDto = new DishDto();
         for (int i = 0; i < ids.length; i++) {
             Long id = ids[i];
@@ -161,9 +161,9 @@ public class DishController {
         }
 
         return R.success("菜品状态修改成功");
-    }*/
+    }
 
-    @PostMapping("/status/{status}")
+    /*@PostMapping("/status/{status}")
     //这个参数这里一定记得加注解才能获取到参数，否则这里非常容易出问题
     public R<String> status(@PathVariable("status") Integer status, @RequestParam List<Long> ids) {
         //log.info("status:{}",status);
@@ -180,7 +180,7 @@ public class DishController {
             }
         }
         return R.success("售卖状态修改成功");
-    }
+    }*/
 
     /**
      * 删除菜品
