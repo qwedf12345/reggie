@@ -179,7 +179,7 @@ public class SetmealCotroller {
      */
     @PostMapping("/status/{status}")
     @CacheEvict(value = "setmealCache",allEntries = true)
-    public R<String> modify(@PathVariable Integer status, Long[] ids){
+    public R<String> modify(@PathVariable("status") Integer status, Long[] ids){
         SetmealDto setmealDto = new SetmealDto();
         for (int i = 0; i < ids.length; i++) {
             Long id = ids[i];
