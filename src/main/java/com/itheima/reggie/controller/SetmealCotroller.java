@@ -177,7 +177,7 @@ public class SetmealCotroller {
      * @param ids
      * @return
      */
-    @PostMapping("/status/{status}")
+    /*@PostMapping("/status/{status}")
     @CacheEvict(value = "setmealCache",allEntries = true)
     public R<String> modify(@PathVariable("status") Integer status, Long[] ids){
         SetmealDto setmealDto = new SetmealDto();
@@ -189,6 +189,17 @@ public class SetmealCotroller {
             BeanUtils.copyProperties(setmeal,setmealDto);
         }
         return R.success("套餐状态修改成功");
+    }*/
+
+    @PostMapping("/status/{status}")
+    public R<String> status(@PathVariable Integer status, @RequestParam  List<Long> ids) {
+        Setmeal setmeal = new Setmeal();
+        for (Long dishId : ids) {
+            setmeal.setId(dishId);
+            setmeal.setStatus(status);
+            setmealService.updateById(setmeal);
+        }
+        return R.success("修改成功");
     }
 
 
